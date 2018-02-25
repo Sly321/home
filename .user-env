@@ -5,12 +5,19 @@
 
 ## Paths
 alias cdws=""
+alias cd..="cd .."
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias cd......="cd ../../../../.."
 
 ## General
 alias ll="ls -la"
 alias la="ls -a"
 alias l="ls -la"
 alias infogit="cat ~/.user-env | grep git"
+alias infodocker="cat ~/.user-env | grep docker"
+alias infodc="cat ~/.user-env | grep docker-compose"
 alias info="cat ~/.user-env | grep '#info'"
 
 ## Git
@@ -28,6 +35,11 @@ alias dkc="docker ps -af | xargs docker stop" # docker kill containers, stops al
 alias dac="docker ps -af | xargs docker rm" # docker annihilate containers, erases all containers
 alias dsp="docker system prune --volumes -f" # delete containers that should be removed already, like git prune deletes branches that are dead anyways. frees space
 
+## Docker Compose
+alias dcu="docker-compose up"
+alias dcud="docker-compose up -d"
+alias dcr="docker-compose rm"
+alias dcps="docker-compose ps"
 
 # Colors
 #
