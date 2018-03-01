@@ -1,3 +1,15 @@
+# Install
+
+fresh
+
+`curl https://raw.githubusercontent.com/Sly321/home/master/.fresh-install --output ~/.fresh-install && ~/.fresh-install && rm -f ~/.fresh-install`
+
+standard
+
+`curl https://raw.githubusercontent.com/Sly321/home/master/.user-env --output ~/.user-env && echo ". ~/.user-env" >> ~/.bashrc`
+
+# Content
+
 # Constants
 
 # Alias
