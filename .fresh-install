@@ -1,10 +1,10 @@
 start=$(date +'%s')
 
 # Questions
-psqlecho "Your Git Email? (Leave empty to skip)"
-read -p "?" gitemail
-echo "Your Git Username? (Leave empty to skip)"
-read -p "?" gitusername
+# psqlecho "Your Git Email? (Leave empty to skip)"
+# read -p "?" gitemail
+# echo "Your Git Username? (Leave empty to skip)"
+# read -p "?" gitusername
 
 printf "\n# # # Update System # # #\n\n"
 yes | sudo apt-get update
