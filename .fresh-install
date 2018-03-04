@@ -46,19 +46,26 @@ yes | sudo apt-get update
 sudo apt-get install docker-ce
 apt-cache madison docker-ce
 
+# Docker Compose
+printf "\n# # # Install Docker Compose # # #\n\n"
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+
 # Postgres
 printf "\n# # # Install Postgres # # #\n\n"
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
   sudo apt-key add -
 yes | sudo apt-get update
-sudo apt-get install postgresql-9.6
+sudo apt install postgresql-client-common
+sudo apt-get install postgresql
 
 # Go
 printf "\n# # # Install Go # # #\n\n"
 curl https://dl.google.com/go/go1.9.4.linux-amd64.tar.gz --output ~/go.tar.gz
 sudo tar -C /usr/local -xzf ~/go.tar.gz
-echo "alias go=$PATH:/usr/local/go/bin/go" >> ~/.bashrc
-alias go=$PATH:/usr/local/go/bin/go
+echo "alias go=/usr/local/go/bin/go" >> ~/.bashrc
+alias go=/usr/local/go/bin/go
 rm -r go.tar.gz
 
 # Visual Studio Code Extension Publisher
