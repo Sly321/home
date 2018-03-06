@@ -54,6 +54,7 @@ alias gcom="git checkout master"
 alias gcod='git checkout development' 
 alias grpo="git remote prune origin" # delete local remote branch orphans
 alias gpod="git push origin --delete" # deletes remote branch
+alias gps='echo -e "\\n- Pushing -\\n" && git push && echo -e "\\n- Pushed -\\n" && echo -e "\\n- Status -\\n" && gs && echo -e "\\n- Done -"'
 alias wdi='git log --since=5.days --author="$GIT_NAME" --oneline --shortstat'
 
 # Yarn
