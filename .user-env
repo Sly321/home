@@ -2,6 +2,13 @@
 export WORKSPACE="/mnt/e/workspace"
 export DESKTOP="/mnt/c/Users"
 export DOWNLOADS="/mnt/e/downloads"
+export GIT_NAME="Sven Liebig"
+
+# Maven Related
+export M2_HOME="/opt/maven"
+export PATH=$M2_HOME/bin:$PATH
+export PATH=$PATH:/usr/lib/jvm/default-java/bin:/usr/lib/jvm/default-java/jre/bin
+export JAVA_HOME=/usr/lib/jvm/default-java
 
 # Alias
 
@@ -27,20 +34,30 @@ alias l="ls -la"
 alias infogit='cat ~/.user-env | grep "=\"git"'
 alias infodocker='cat ~/.user-env | grep "=\"docker "'
 alias infodc='cat ~/.user-env | grep "=\"docker-compose "'
+alias git?='infogit'
+alias docker?='infodocker'
+alias docker-compose?='infodc'
 alias info="cat ~/.user-env | grep '#info'"
 
 ## Git
 alias ga="git add"
 alias gaa="git add --all"
 alias gc="git commit"
-alias gac="git commit -a -m"
+alias gac="git commit -am"
 alias gs="git status"
 alias gp="git push"
 alias gb="git branch"
 alias gba="git branch -a"
 alias gd="git diff"
 alias gco="git checkout"
-alias gcm="git checkout master"
+alias gcom="git checkout master"
+alias gcod='git checkout development' 
+alias grpo="git remote prune origin" # delete local remote branch orphans
+alias gpod="git push origin --delete" # deletes remote branch
+alias wdi='git log --since=5.days --author="$GIT_NAME" --oneline --shortstat'
+
+# Yarn
+alias yarnclean="rm -rf node_modules && rm -f yarn.lock && yarn"
 
 ## Docker
 alias dcs="docker ps" # docker container status
@@ -82,6 +99,25 @@ extract () {
         echo "'$1' is not a valid file"
     fi
 }
+
+function gfc {
+    if [ $# -eq 1 ]
+        then
+            echo -e "\\n- Add -\\n"
+            ga .
+            echo -e "\\n- Added -\\n"
+            echo -e "\\n- Commit -\\n"
+            gc "$1"
+            echo -e "\\n- Commited -\\n"
+            echo -e "\\n- Pull -\\n"
+            git pull
+            echo -e "\\n- Pulled -\\n"
+            gps
+    else
+        echo "Bitte ein Argument übergeben."
+    fi
+}
+
 
 ## PS1
 git_branch() {
