@@ -7,7 +7,7 @@ start=$(date +'%s')
 # read -p "?" gitusername
 
 printf "\n# # # Update System # # #\n\n"
-yes | sudo apt-get update
+sudo apt-get -y update
 
 # Install SH
 printf "\n# # # Downloading and Install .user-env # # #\n\n"
@@ -15,7 +15,7 @@ curl https://raw.githubusercontent.com/Sly321/home/master/.user-env --output ~/.
 
 # Git
 printf "\n# # # Install git # # #\n\n"
-sudo apt-get install git-all
+sudo apt-get install -y git-all
 
 # Nodejs
 printf "\n# # # Install Nodejs # # #\n\n"
@@ -26,7 +26,7 @@ sudo apt-get install -y nodejs
 printf "\n# # # Install Yarn # # #\n\n"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn
+sudo apt-get -y update && sudo apt-get install -y yarn
 
 # Docker
 printf "\n# # # Install Docker # # #\n\n"
@@ -42,23 +42,26 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-yes | sudo apt-get update
-sudo apt-get install docker-ce
-apt-cache madison docker-ce
+sudo apt-get -y update
+sudo apt-get install -y docker-ce
+cache madison docker-ce
 
 # Docker Compose
 printf "\n# # # Install Docker Compose # # #\n\n"
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+# Maven
+printf "\n# # # Install Maven # # #\n\n"
+sudo apt-get install -y maven
 
 # Postgres
 printf "\n# # # Install Postgres # # #\n\n"
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
   sudo apt-key add -
-yes | sudo apt-get update
-sudo apt install postgresql-client-common
-sudo apt-get install postgresql
+sudo apt-get -y update
+sudo apt install -y postgresql-client-common
+sudo apt-get install -y postgresql
 
 # Go
 printf "\n# # # Install Go # # #\n\n"
