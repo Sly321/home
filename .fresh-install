@@ -53,11 +53,15 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # Maven
 printf "\n# # # Install Maven # # #\n\n"
-curl http://mirror.netcologne.de/apache.org/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz --output ~/maven.tar.gz
-sudo tar -C /opt -xzf ~/maven.tar.gz
-echo "export M2_HOME='/opt/apache-maven-3.5.0'" >> ~/.bashrc
-echo "export PATH='$PATH:/opt/apache-maven-3.5.0/bin'" >> ~/.bashrc
-sudo rm -rf ~/maven.tar.gz
+cd /opt/
+sudo mkdir --parent dist-install/maven
+cd dist-install/maven
+sudo wget http://mirror.softaculous.com/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz
+sudo tar -xvzf apache*.tar.gz
+sudo rm -rf apache*.tar.gz
+sudo ln -s /opt/dist-install/maven/apache-maven-3.5.2 /opt/maven
+export M2_HOME="/opt/maven"
+export PATH=$M2_HOME/bin:$PATH
 
 # Postgres
 printf "\n# # # Install Postgres # # #\n\n"
