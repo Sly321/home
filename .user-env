@@ -105,10 +105,10 @@ function gfc {
     if [ $# -eq 1 ]
         then
             echo -e "\\n- Add -\\n"
-            ga .
+            gaa
             echo -e "\\n- Added -\\n"
             echo -e "\\n- Commit -\\n"
-            gc "$1"
+            gc -m "$1"
             echo -e "\\n- Commited -\\n"
             echo -e "\\n- Pull -\\n"
             git pull
