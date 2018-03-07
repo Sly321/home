@@ -39,6 +39,8 @@ alias docker?='infodocker'
 alias docker-compose?='infodc'
 alias info="cat ~/.user-env | grep '#info'"
 
+# docker images | grep "atlassian" | sed -nEe 's/^.*([a-f0-9]{12}).*$/\1/p' | xargs docker rmi -f
+
 ## Git
 alias ga="git add"
 alias gaa="git add --all"
