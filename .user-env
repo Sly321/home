@@ -1,4 +1,4 @@
-# version: 1.1
+# version: 1.1.1
 
 ## Constants
 export WORKSPACE="/mnt/e/workspace"
@@ -87,7 +87,7 @@ alias dcps="docker-compose ps"
 ## User Environment
 alias local_env_version='grep -m 1 "# version:" ~/.user-env | sed "s/[^.] version: //"'
 alias latest_env_version='curl -s https://raw.githubusercontent.com/Sly321/home/master/.user-env | tac | tac | grep -m 1 "# version:" | sed "s/# version: //"'
-alias env_versions='echo "Local version: $(local_env_version) - Latest version: $(latest_env_version)'
+alias env_versions='echo "Local version: $(local_env_version) - Latest version: $(latest_env_version)"'
 
 function update_user_env {
     echo "Updating from: $(local_env_version) to $(latest_env_version)"
