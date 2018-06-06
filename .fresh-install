@@ -9,7 +9,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # You have to use the modules as variables later, this is not enough
-declare -a arr=("git" "nodejs" "yarn" "docker" "docker_compose" "maven" "postgres" "go" "vscode_extension_publisher" "user_env")
+declare -a arr=("git" "nodejs" "yarn" "docker" "docker_compose" "postgres" "go" "vscode_extension_publisher" "user_env")
 
 function get_input
 {
@@ -83,7 +83,6 @@ function print_all_installs
     print_install $install_yarn "yarn"
     print_install $install_docker "docker"
     print_install $install_docker_compose "docker_compose"
-    print_install $install_maven "maven"
     print_install $install_postgres "postgres"
     print_install $install_go "go"
 }
@@ -128,10 +127,6 @@ function print_versions
     if [ $install_docker_compose = true ]
         then
         docker-compose --version
-    fi
-    if [ $install_maven = true ]
-        then
-        mvn --version
     fi
     if [ $install_postgres = true ]
         then
@@ -277,26 +272,6 @@ function install_postgres_func
     fi
 }
 
-function install_maven_func
-{
-    if [ $install_maven = true ]
-        then
-        echo -e ""
-        echo -e "- - - \e[95mINSTALL POSTGRES\e[39m - - -"
-        echo -e ""
-        cd /opt/
-        sudo mkdir --parent dist-install/maven
-        cd dist-install/maven
-        sudo wget http://mirror.softaculous.com/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz
-        sudo tar -xvzf apache*.tar.gz
-        sudo rm -rf apache*.tar.gz
-        sudo ln -s /opt/dist-install/maven/apache-maven-3.5.2 /opt/maven
-        export M2_HOME="/opt/maven"
-        export PATH=$M2_HOME/bin:$PATH
-        echo -e "OK"
-    fi
-}
-
 function update_system_func
 {
     printf "\n- - - \e[95mUPDATE SYSTEM\e[39m - - -\n\n"
@@ -321,6 +296,5 @@ install_go_func
 install_docker_func
 install_docker_compose_func
 install_postgres_func
-install_maven_func
 
 print_versions
