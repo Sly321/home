@@ -1,0 +1,6 @@
+# Constant exports for the user-env
+
+## Constants
+export WORKSPACE="/mnt/e/workspace"
+export DESKTOP="/mnt/c/Users"
+export DOWNLOADS="/mnt/e/downloads"
