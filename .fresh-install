@@ -9,7 +9,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # You have to use the modules as variables later, this is not enough
-declare -a arr=("git" "nodejs" "yarn" "docker" "docker_compose" "postgres" "go" "vscode_extension_publisher" "user_env")
+declare -a arr=("git" "nodejs" "yarn" "docker" "docker_compose" "postgres" "go" "user_env")
 
 function get_input
 {
