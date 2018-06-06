@@ -2,7 +2,7 @@
 
 fresh
 
-`curl https://raw.githubusercontent.com/Sly321/home/master/.fresh-install --output ~/.fresh-install && chmod +x ~/.fresh-install && ~/.fresh-install && rm -f ~/.fresh-install`
+`curl https://raw.githubusercontent.com/Sly321/home/master/.fresh-install --output ~/.fresh-install && chmod +x ~/.fresh-install && sudo ~/.fresh-install && rm -f ~/.fresh-install`
 
 standard
 
