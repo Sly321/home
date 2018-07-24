@@ -1,4 +1,4 @@
-# version: 1.1.1
+# version: 1.1.2
 
 ## Constants
 
@@ -69,6 +69,7 @@ alias wdi='git log --since=5.days --author="$GIT_NAME" --oneline --shortstat'
 
 # Yarn
 alias yarnclean="rm -rf node_modules && rm -f yarn.lock && yarn"
+alias ycc="yarn cache clean"
 
 ## Docker
 alias dcs="docker ps" # docker container status
