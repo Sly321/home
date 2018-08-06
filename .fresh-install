@@ -158,6 +158,7 @@ function install_user_env
         echo -e ""
         curl https://raw.githubusercontent.com/Sly321/home/master/.user-env --output ~/.user-env
         curl https://raw.githubusercontent.com/Sly321/home/master/.user-env-const --output ~/.user-env-const
+        echo -e "# Custom Alias / Functions here" > ~/.user-env-custom
         if grep -Fxq ". ~/.user-env" ~/.bashrc
         then
             echo "Found that .bashrc sourced the user_env already"
