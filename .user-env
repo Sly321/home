@@ -93,7 +93,7 @@ alias env_versions='echo "Local version: $(local_env_version) - Latest version: 
 
 function update_user_env {
     echo "Updating from: $(local_env_version) to $(latest_env_version)"
-    curl -s https://raw.githubusercontent.com/Sly321/home/master/.user-env --output ~/.user-env && source ~/.user-env
+    sudo curl -s https://raw.githubusercontent.com/Sly321/home/master/.user-env --output ~/.user-env && source ~/.user-env
     echo "Done - new local version: $(local_env_version)"
 }
 
