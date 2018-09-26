@@ -1,4 +1,4 @@
-# version: 1.1.4
+# version: 1.1.5
 
 ## Constants
 . ~/.user-env-const
@@ -51,6 +51,7 @@ alias gs="git status"
 ### Push
 alias gp="git push"
 alias gpom="git push -u origin master"
+alias gpuo='git push -u origin "$(git rev-parse --abbrev-ref HEAD)"'
 
 ### Branches
 alias gb="git branch"
@@ -140,6 +141,30 @@ function gfc {
     fi
 }
 
+get_branch_context() {
+    echo -n "$(git rev-parse --abbrev-ref HEAD | sed -n 's/^.*\/\(.*\)\/\([a-Z]*\)-\([0-9]*\).*$/\2-\3/p')"
+}
+
+function gfce {
+    if [ $# -eq 1 ]
+        then
+            echo -e "\\n- Add -\\n"
+            gaa
+            echo -e "\\n- Added -\\n"
+            echo -e "\\n- Commit -\\n"
+            gc -m "$(get_branch_context) - $1"
+            echo -e "\\n- Commited -\\n"
+            echo -e "\\n- Pull -\\n"
+            git pull
+            echo -e "\\n- Pulled -\\n"
+            gps
+    else
+        echo "Bitte ein Argument übergeben."
+    fi
+}
+
+## Create .gitignore
+alias gitignore_node='echo -e "### Node ###\n\n# Logs\nlogs\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# Optional npm cache directory\n.npm\n\n# Dependency directories\n/node_modules\n/jspm_packages\n/bower_components\n\n# Yarn Integrity file\n.yarn-integrity\n\n# Optional eslint cache\n.eslintcache\n\n# dotenv environment variables file(s)\n.env\n.env.*\n\n#Build generated\ndist/\nbuild/\n\n# Serverless generated files\n.serverless/\n\n### SublimeText ###\n# cache files for sublime text\n*.tmlanguage.cache\n*.tmPreferences.cache\n*.stTheme.cache\n\n# workspace files are user-specific\n*.sublime-workspace\n\n# project files should be checked into the repository, unless a significant\n# proportion of contributors will probably not be using SublimeText\n# *.sublime-project\n\n\n### VisualStudioCode ###\n.vscode/*\n!.vscode/settings.json\n!.vscode/tasks.json\n!.vscode/launch.json\n!.vscode/extensions.json\n\n### Vim ###\n*.sw[a-p]\n\n### WebStorm/IntelliJ ###\n/.idea\nmodules.xml\n*.ipr\n*.iml\n\n\n### System Files ###\n*.DS_Store\n\n# Windows thumbnail cache files\nThumbs.db\nehthumbs.db\nehthumbs_vista.db\n\n# Folder config file\nDesktop.ini\n\n# Recycle Bin used on file shares\n$RECYCLE.BIN/\n\n# tslint\nreports/\n\n# Thumbnails\n._*\n\n# Files that might appear in the root of a volume\n.DocumentRevisions-V100\n.fseventsd\n.Spotlight-V100\n.TemporaryItems\n.Trashes\n.VolumeIcon.icns\n.com.apple.timemachine.donotpresent" >> .gitignore'
 
 ## PS1
 git_branch() {
